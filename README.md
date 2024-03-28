@@ -48,18 +48,18 @@ _Chaque entité est caractérisée par des attributs spécifiques, tels que l'id
 
 ### Dictionnaire de données
 
-![Dico-données](./MERISE/Dictionnaire_de_données.png)
+![Dico-données](./Merise/Dictionnaire_de_données.png)
 
 ### MCD
 
-![MCD](./MERISE/MCD.png)
+![MCD](./Merise/MCD.png)
 
 ### MPD
 
-![MPD](./MERISE/MPD.png)
+![MPD](./Merise/MPD.png)
 
 ### MLD
 
-![MLD](./MERISE/MLD.png)
+![MLD](./Merise/MLD.png)
 
 ---
