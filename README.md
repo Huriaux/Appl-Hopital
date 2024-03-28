@@ -112,3 +112,35 @@ J'ai également configuré pgAdmin avec un e-mail et un mot de passe par défaut
 En ajoutant un nouveau serveur dans pgAdmin, j'ai mis en place un environnement complet pour le développement et la gestion de mon application.
 
 ---
+
+## **-----------| Base de données |**
+
+**Ma base de données est composée de 5 Tables :**\
+`Patient`,
+`Services`,
+`Lit`,
+`Chambre`,
+et `Sejour`
+
+**La Table `Patient`** stocke les données des patients. Avec une contrainte d’unicité sur l’attribut `num_secu` afin que chaque n° de sécurité social soit propre à un patient et qu’il n’y est pas de doublons.
+
+Des déclencheurs (`triggers`) sont configurés sur les attributs `dt_creation` et `dt_modification` de la Table `Patient`. Lors de l'ajout d'un nouveau patient, la date et l'heure de création sont automatiquement enregistrées, et lors de la modification d'un patient existant par un administrateur, la date et l'heure de modification sont mises à jour.
+
+**La Table `Services`** comprend les quatre services de l’Hôpital, avec l’étage où se situe le service (`etage`) pour rendre le système plus précis et le nom du service (`nom_service`)
+**Remarque :** J’ai modifié le nom de la Table : Service → `Services`. **Car 'Service' est un mot réservé par PostgreSQL**
+
+Ensuite, **la Table `Lit`** permet de connaître la disponibilité des lits. Elle est liée à la Table Services (#`id_service`) afin de situé les lits disponible ou non dans les différents `Services`.
+
+**La Table `Chambre`**, elle, établit la relation entre les lits (`id_lit`) et les services (`id_service`), avec une contrainte d'unicité sur le numéro de chambre pour garantir son caractère unique.
+
+Ainsi, cela permets de savoir quel lit est disponible, quel est le numéro de la chambre où se situe le lit et dans quel services. Et un lit pourra être affecté à un patient qui dispose d’un séjour.
+
+Enfin, **la Table `Sejour`** permet à l’administrateur de prendre en compte les arrivées et sorties de patient et d’associer un patient à un `Sejour` (`id_patient`).
+
+Lorsque l’arrivée d’un `Patient` est pris en compte, un Sejour est créer, et il sera dirigé vers le Service approprié (`id_service`).
+
+Le système vérifie la disponibilité des lits dans le Service concerné (`id_lit`) et affecte un lit au patient.
+Lorsque le patient quitte le service, son séjour se termine automatiquement, libérant ainsi le lit et rendant la chambre disponible à nouveau.
+
+**Conclusion :**
+Ces tables permettent de gérer efficacement les données des patients, des services hospitaliers, des lits, des chambres et des séjours, assurant ainsi un suivi précis des activités et des ressources de l'hôpital.
