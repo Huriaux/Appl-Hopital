@@ -66,7 +66,7 @@ _Chaque entité est caractérisée par des attributs spécifiques, tels que l'id
 
 ## **-----------| UML |**
 
-### 1) UML - Règles de gestion :
+### Règles de gestion :
 
 **Acteur :**
 
@@ -100,5 +100,15 @@ On peut…
 ### Diagramme de classes
 
 ![Diag.classes](./Uml/ECF_App_Hopital-Diagramme%20de%20classes.drawio.png)
+
+---
+
+## **-----------| Container |**
+
+J'ai créé un environnement Docker avec PostgreSQL et pgAdmin. J'ai configuré PostgreSQL avec un utilisateur, un mot de passe et une base de données.
+
+J'ai également configuré pgAdmin avec un e-mail et un mot de passe par défaut. J'ai créé des volumes pour persister les données de PostgreSQL.
+
+En ajoutant un nouveau serveur dans pgAdmin, j'ai mis en place un environnement complet pour le développement et la gestion de mon application.
 
 ---
