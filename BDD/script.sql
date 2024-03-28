@@ -1,30 +1,3 @@
--- CRÉATION TABLE : Administrateur
-CREATE TABLE IF NOT EXISTS Administrateur (
-	id_admin SERIAL PRIMARY KEY,
-	nom VARCHAR(50) NOT null,
-	prenom VARCHAR(50) NOT null,
-	poste VARCHAR(50) NOT null
-);
--- > ok
-
--- Ajout données Administrateur
-INSERT INTO Administrateur (nom, prenom, poste)
-VALUES
-    ('nom', 'prenom', 'poste'),
-    ('Smith', 'Emily', 'secrétaire médical'),
-    ('Johnson', 'Daniel', 'secrétaire médical'),
-    ('Brown', 'Sophia', 'infirmier ou infirmière'),
-    ('House', 'Matthew', 'infirmier ou infirmière'),
-    ('Miller', 'Olivia', 'infirmier ou infirmière'),
-    ('Strange', 'James', 'infirmier ou infirmière'),
-    ('Moore', 'Emma', 'administrateur'),
-    ('Seuss', 'Michael', 'administrateur')
--- > ok
-
--- Afficher table
-SELECT * FROM Administrateur;
-
-
 -- -------------------------------------------------------------------------------------------------|
 -- CRÉATION TABLE : Patient
 CREATE TABLE IF NOT EXISTS Patient (
@@ -57,6 +30,7 @@ BEGIN -- la fonction démarre ici
 END; -- la fonction s'arrête ici
 $creation_nouveau_patient$ 
 LANGUAGE plpgsql; -- spécifie au système de base de données le langage dans lequel la fonction est écrite afin qu'il puisse l'exécuter correctement
+-- > ok
 
 --Création du trigger en appelant la fonction 'set_creation_date()'
 CREATE TRIGGER set_creation_date_trigger
@@ -75,6 +49,7 @@ BEGIN
 END;
 $maj_patient_existant$ 
 LANGUAGE plpgsql;
+-- > ok
 
 --Création du trigger en appelant la fonction 'set_modification_date()'
 CREATE TRIGGER set_modification_date_trigger
@@ -108,7 +83,6 @@ VALUES
     ('Leclerc', 'Mathieu', '1975-02-22', 'M23456789', '1616 Rue des Rochers', 75004, 'Paris', '0687654321', 'mathieu.leclerc@example.com')
 -- clause ON CONFLICT pour éviter d'insérer des n° de sécu exitants
 ON CONFLICT (num_secu) DO NOTHING;
--- > ok
 
 
 -- Afficher la table
@@ -133,7 +107,6 @@ VALUES
     ('Service-2', 2),
     ('Service-3', 3)
 ;
--- > ok
 
 
 -- afficher la table Services
@@ -153,7 +126,6 @@ CREATE TABLE IF NOT EXISTS Sejour (
 );
 -- > ok
 
--- TODO clé étrangère à ajouter !!!
 
 -- Ajout données Sejour (pour l'exemple)
 INSERT INTO Sejour (id_patient, id_service, id_lit, date_arrivee_patient, date_sortie_patient)
@@ -180,7 +152,6 @@ VALUES
     (18, 2, 12, '2023-09-28', '2023-10-03'),
     (19, 3, 25, '2024-03-06', '2024-03-16'),
     (20, 1, 2, '2023-01-29', '2023-02-05')
-
 
 
 -- Afficher la table Sejour
@@ -244,7 +215,6 @@ VALUES
     ('D408', 4, 39),
     ('D409', 4, 40)
 ON CONFLICT (num_chambre) DO NOTHING;
--- > ok
 
 
 -- afficher la table Chambre
@@ -303,7 +273,6 @@ VALUES
     (true, 4),
     (true, 4),
     (true, 4)
--- > ok
 
 
 -- afficher la table Lit
