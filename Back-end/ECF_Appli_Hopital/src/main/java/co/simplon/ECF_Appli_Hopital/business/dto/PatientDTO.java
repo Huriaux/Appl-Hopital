@@ -1,6 +1,7 @@
 package co.simplon.ECF_Appli_Hopital.business.dto;
 
 import java.util.Date;
+import java.util.List;
 
 public class PatientDTO {
     private long idPatient;
@@ -110,6 +111,16 @@ public class PatientDTO {
 
     public void setDateModif(Date dateModif) {
         this.dateModif = dateModif;
+    }
+
+    public void add(List<PatientDTO> patients) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'add'");
+    }
+
+    public void set(int i, PatientDTO patient) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'set'");
     }
 
 }

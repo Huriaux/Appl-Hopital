@@ -7,7 +7,7 @@ import co.simplon.ECF_Appli_Hopital.business.dto.PatientDTO;
 public interface PatientService {
     PatientDTO ajouterPatient(PatientDTO patient);
 
-    List<PatientDTO> afficherListPatients();
+    List<PatientDTO> afficherListePatients();
 
     PatientDTO afficherPatient(Long id);
 
