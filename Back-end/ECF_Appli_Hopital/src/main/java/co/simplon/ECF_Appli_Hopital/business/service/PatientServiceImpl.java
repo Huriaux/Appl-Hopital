@@ -14,9 +14,12 @@ import co.simplon.ECF_Appli_Hopital.persistence.repository.PatientQuery;
 
 @Service
 public class PatientServiceImpl implements PatientService {
+    // permet d'interagir avec la base de données pour l'entité Patient (--> Repository)
     private PatientQuery patientRepository;
 
     @Autowired
+    // constructeur
+    // prend en paramètre PatientQuery, permet d'interagir avec le Repository pour accéder aux donnée des patients
     public PatientServiceImpl(PatientQuery patientRepository) {
         this.patientRepository = patientRepository;
     }
