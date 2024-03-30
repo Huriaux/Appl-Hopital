@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import co.simplon.ECF_Appli_Hopital.business.convert.PatientConvert;
 import co.simplon.ECF_Appli_Hopital.business.dto.PatientDTO;
+import co.simplon.ECF_Appli_Hopital.business.exception.PatientIntrouvableException;
 import co.simplon.ECF_Appli_Hopital.persistence.entity.Patient;
 import co.simplon.ECF_Appli_Hopital.persistence.repository.PatientQuery;
 
@@ -25,8 +26,11 @@ public class PatientServiceImpl implements PatientService {
     public PatientDTO ajouterPatient(PatientDTO patientDto) {
         // déclaration variable 'entityPatient' pour convertir le patient (à ajouter) de DTO à Entity
         Patient entityPatient = PatientConvert.getInstance().convertToEntity(patientDto);
+        // on met à jour la date de création
+        entityPatient.setDateCreation(patientDto.getDateCreation());
         // déclation variable 'savePatient' pour sauvegarder le nouveau patient (Entity)
         Patient savePatient = patientRepository.save(entityPatient);
+
         // et on renvoi le patient sauvegardé converti en DTO
         return PatientConvert.getInstance().convertToDto(savePatient);
     }
@@ -58,9 +62,34 @@ public class PatientServiceImpl implements PatientService {
     }
 
     @Override
-    public PatientDTO modifierPatient(PatientDTO patient, Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'modifierPatient'");
+    public PatientDTO modifierPatient(PatientDTO patientDto, Long id) {
+        // d'abord on recherche le patient comme dans la méthode précédente
+        Optional<Patient> patientOptional = patientRepository.findById(id);
+        // condition : si le patient recherché par son id est présent dans la BDD
+        if (patientOptional.isPresent()) {
+            // on le récupère dans la variable 'patientModif'
+            Patient patientModif = patientOptional.get();
+            // et on met à jour chaque donnée :
+            // 'patientDto.getNom()' récupère le nouveau nom du patient à partr du DTO (PatientDTO)
+            // et 'patientModif.setNom()' définit le nouveau nom du patient dans l'objet patientModif (Entity)
+            patientModif.setNom(patientDto.getNom());
+            patientModif.setPrenom(patientDto.getPrenom());
+            patientModif.setDateNaissance(patientDto.getDateNaissance());
+            patientModif.setNumSecu(patientDto.getNumSecu());
+            patientModif.setAdresse(patientDto.getAdresse());
+            patientModif.setCp(patientDto.getCp());
+            patientModif.setCommune(patientDto.getCommune());
+            patientModif.setTelephone(patientDto.getTelephone());
+            patientModif.setEmail(patientDto.getEmail());
+            patientModif.setDateModif(patientDto.getDateModif());
+            // déclation variable 'updatePatient' pour sauvegarder les données du patient modifié (Entity)
+            Patient updatePatient = patientRepository.save(patientModif);
+
+            // et on renvoi le patient sauvegardé converti en DTO
+            return PatientConvert.getInstance().convertToDto(updatePatient);
+        } else {
+            throw new PatientIntrouvableException("Patient introuvable avec l'identifiant : " + id);
+        }
     }
 
 }
