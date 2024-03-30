@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,8 +39,16 @@ public class PatientController {
         }
     }
 
+    // permet d'interagir avec le Front (chemin)
+    @CrossOrigin
     @GetMapping("/patient")
     public List<PatientDTO> listerPatients() {
         return patientServ.afficherListePatients();
     }
+
+    @GetMapping("/patient/{id}")
+    public PatientDTO afficherPatientParID(@PathVariable("id") Long id) {
+        return patientServ.afficherPatient(id);
+    }
+
 }
