@@ -22,7 +22,7 @@ public class PatientController {
     }
 
     @PostMapping("/patient")
-    public ResponseEntity<String> postMethodName(@RequestBody PatientDTO patientDTO) {
+    public ResponseEntity<String> ajoutNouveauPatient(@RequestBody PatientDTO patientDTO) {
         // 'try' et 'catch' sont utilisés pour gérer les exceptions en cas d'erreurs lors de l'exécution
         try {
             // appel la méthode patientServ pour ajouter le patient
