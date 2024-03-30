@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,6 +24,7 @@ public class PatientController {
         this.patientServ = patientServ;
     }
 
+    @CrossOrigin
     @PostMapping("/patient")
     public ResponseEntity<String> ajoutNouveauPatient(@RequestBody PatientDTO patientDTO) {
         // 'try' et 'catch' sont utilisés pour gérer les exceptions en cas d'erreurs lors de l'exécution
@@ -39,16 +41,21 @@ public class PatientController {
         }
     }
 
-    // permet d'interagir avec le Front (chemin)
-    @CrossOrigin
+    @CrossOrigin // permet d'interagir avec le Front (chemin)
     @GetMapping("/patient")
     public List<PatientDTO> listerPatients() {
         return patientServ.afficherListePatients();
     }
 
+    @CrossOrigin
     @GetMapping("/patient/{id}")
     public PatientDTO afficherPatientParID(@PathVariable("id") Long id) {
         return patientServ.afficherPatient(id);
     }
 
+    @CrossOrigin
+    @PutMapping("/patient/{id}")
+    public PatientDTO modifierAjouterPatient(@PathVariable("id") Long id, @RequestBody PatientDTO patientDTO) {
+        return patientServ.modifierPatient(patientDTO, id);
+    }
 }
