@@ -70,9 +70,9 @@ public class PatientConvert {
     }
 
     // Convert liste Patient (DTO) en liste Patient (Entity)
-    public List<Patient> convertListDTOToListEntity(final List<PatientDTO> listPatientDTO) {
+    public List<Patient> convertListDTOToListEntity(final List<PatientDTO> listePatients) {
         List<Patient> listPatientEntity = new ArrayList<>();
-        for (final PatientDTO pdto : listPatientDTO) {
+        for (final PatientDTO pdto : listePatients) {
             listPatientEntity.add(convertToEntity(pdto));
         }
         return listPatientEntity;

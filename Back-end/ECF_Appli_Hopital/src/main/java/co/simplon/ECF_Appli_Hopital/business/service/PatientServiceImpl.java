@@ -1,59 +1,66 @@
 package co.simplon.ECF_Appli_Hopital.business.service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import co.simplon.ECF_Appli_Hopital.business.convert.PatientConvert;
 import co.simplon.ECF_Appli_Hopital.business.dto.PatientDTO;
+import co.simplon.ECF_Appli_Hopital.persistence.entity.Patient;
+import co.simplon.ECF_Appli_Hopital.persistence.repository.PatientQuery;
 
 @Service
 public class PatientServiceImpl implements PatientService {
+    private PatientQuery patientRepository;
 
-    // on simule une liste de patients
-    List<PatientDTO> patients = new ArrayList<>();
-
-    @Override
-    public PatientDTO ajouterPatient(PatientDTO patient) {
-        patients.add(patient); // On ajoute un patient à la liste
-        return patient; // On retourne le patient ajouté
+    @Autowired
+    public PatientServiceImpl(PatientQuery patientRepository) {
+        this.patientRepository = patientRepository;
     }
 
     @Override
+    // permet d'ajouter un nouveau patient dans la BDD
+    public PatientDTO ajouterPatient(PatientDTO patientDto) {
+        // déclaration variable 'entityPatient' pour convertir le patient (à ajouter) de DTO à Entity
+        Patient entityPatient = PatientConvert.getInstance().convertToEntity(patientDto);
+        // déclation variable 'savePatient' pour sauvegarder le nouveau patient (Entity)
+        Patient savePatient = patientRepository.save(entityPatient);
+        // et on renvoi le patient sauvegardé converti en DTO
+        return PatientConvert.getInstance().convertToDto(savePatient);
+    }
+
+    @Override
+    // permet d'afficher tous les patient existant de la BDD
     public List<PatientDTO> afficherListePatients() {
-        return patients;
+        // déclaration variable 'listePatients' pour récupèrer tous les patients de la BDD sous forme de liste
+        List<Patient> listePatient = patientRepository.findAll();
+        // ici on retourne la liste des entités Patient convertie en DTO
+        return PatientConvert.getInstance().convertListEntityToListDTO(listePatient);
     }
 
     @Override
     public PatientDTO afficherPatient(Long id) {
-        for (PatientDTO patient : patients) { // on déclare un boucle 'for'
-            if (Long.valueOf(patient.getIdPatient()).equals(id)) { // vérifie si l'identifiant du patient existe
-                return patient; // retourne l'information du patient modifié
-            }
+        // déclaration variable 'patientOptional' pour récupérer un patient précis par son id 
+        // 'Optional' permet de récupérer une valeur qui peut être présente ou absente de la BDD avec la méthode 'findById()'
+        Optional<Patient> patientOptional = patientRepository.findById(id);
+        // condition : si le patient recherché par son id est présent dans la BDD
+        if (patientOptional.isPresent()) {
+            // on le récupère dans la variable déclarée 'patient'
+            Patient patientTrouve = patientOptional.get();
+            // et on le retourne converti en DTO
+            return PatientConvert.getInstance().convertToDto(patientTrouve);
+        } else { // dans le cas ou aucun id ne match avec le patient que l'on recherche...
+            // ...on retourne 'null'
+            return null;
         }
-        return null; // retourne 'null' si le patient n'existe pas
     }
 
     @Override
-    public PatientDTO modifierPatient(PatientDTO nouvelleInfosPatient, Long id) {
-        for (int i = 0; i < patients.size(); i++) { // déclare une boucle 'for' qui parcours la liste de patients
-            PatientDTO pdto = patients.get(i);
-
-            if (Long.valueOf(pdto.getIdPatient()).equals(id)) { // vérifie si l'id du patient courant correspond à l'id du patient passé en paramètre
-                // si oui, les informations suivantes du patient sont mise à jour
-                pdto.setNom(nouvelleInfosPatient.getNom());
-                pdto.setPrenom(nouvelleInfosPatient.getPrenom());
-                pdto.setDateNaissance(nouvelleInfosPatient.getDateNaissance());
-                pdto.setNumSecu(nouvelleInfosPatient.getNumSecu());
-                pdto.setAdresse(nouvelleInfosPatient.getAdresse());
-                pdto.setCp(nouvelleInfosPatient.getCp());
-                pdto.setCommune(nouvelleInfosPatient.getCommune());
-                pdto.setTelephone(nouvelleInfosPatient.getTelephone());
-                pdto.setEmail(nouvelleInfosPatient.getEmail());
-                return pdto;
-            }
-        }
-        // si pas de correspondance avec l'id patient, retourne 'null'
-        return null;
+    public PatientDTO modifierPatient(PatientDTO patient, Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'modifierPatient'");
     }
+
 }

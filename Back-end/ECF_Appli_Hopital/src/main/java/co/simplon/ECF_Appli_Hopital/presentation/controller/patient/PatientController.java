@@ -9,11 +9,11 @@ import co.simplon.ECF_Appli_Hopital.business.dto.PatientDTO;
 import co.simplon.ECF_Appli_Hopital.business.service.PatientService;
 
 @RestController
-public class ListerPatientController {
+public class PatientController {
 
     private final PatientService patientServ;
 
-    public ListerPatientController(PatientService patientServ) {
+    public PatientController(PatientService patientServ) {
         this.patientServ = patientServ;
     }
 
