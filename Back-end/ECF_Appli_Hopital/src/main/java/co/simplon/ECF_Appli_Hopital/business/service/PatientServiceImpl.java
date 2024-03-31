@@ -3,7 +3,6 @@ package co.simplon.ECF_Appli_Hopital.business.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import co.simplon.ECF_Appli_Hopital.business.convert.PatientConvert;
@@ -17,7 +16,6 @@ public class PatientServiceImpl implements PatientService {
     // permet d'interagir avec la base de données pour l'entité Patient (--> Repository)
     private PatientQuery patientRepository;
 
-    @Autowired
     // constructeur
     // prend en paramètre PatientQuery, permet d'interagir avec le Repository pour accéder aux donnée des patients
     public PatientServiceImpl(PatientQuery patientRepository) {
@@ -51,6 +49,7 @@ public class PatientServiceImpl implements PatientService {
     public PatientDTO afficherPatient(Long id) {
         // déclaration variable 'patientOptional' pour récupérer un patient précis par son id 
         // 'Optional' permet de récupérer une valeur qui peut être présente ou absente de la BDD avec la méthode 'findById()'
+        @SuppressWarnings("null")
         Optional<Patient> patientOptional = patientRepository.findById(id);
         // condition : si le patient recherché par son id est présent dans la BDD
         if (patientOptional.isPresent()) {
@@ -67,6 +66,7 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public PatientDTO modifierPatient(PatientDTO patientDto, Long id) {
         // d'abord on recherche le patient comme dans la méthode précédente
+        @SuppressWarnings("null")
         Optional<Patient> patientOptional = patientRepository.findById(id);
         // condition : si le patient recherché par son id est présent dans la BDD
         if (patientOptional.isPresent()) {

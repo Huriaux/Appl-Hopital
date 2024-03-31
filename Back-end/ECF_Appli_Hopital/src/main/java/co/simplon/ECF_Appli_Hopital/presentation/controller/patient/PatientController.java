@@ -49,13 +49,14 @@ public class PatientController {
 
     @CrossOrigin
     @GetMapping("/patient/{id}")
-    public PatientDTO afficherPatientParID(@PathVariable("id") Long id) {
+    public PatientDTO afficherPatientParID(@PathVariable Long id) {
         return patientServ.afficherPatient(id);
     }
 
     @CrossOrigin
     @PutMapping("/patient/{id}")
-    public PatientDTO modifierAjouterPatient(@PathVariable("id") Long id, @RequestBody PatientDTO patientDTO) {
+    public PatientDTO modifierAjouterPatient(@PathVariable Long id, @RequestBody PatientDTO patientDTO) {
         return patientServ.modifierPatient(patientDTO, id);
     }
+
 }
