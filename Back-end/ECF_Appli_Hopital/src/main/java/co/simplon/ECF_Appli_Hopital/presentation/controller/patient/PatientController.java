@@ -44,18 +44,21 @@ public class PatientController {
     @CrossOrigin // permet d'interagir avec le Front (chemin)
     @GetMapping("/patient")
     public List<PatientDTO> listerPatients() {
+        // renvoi la liste de tous les patients existants
         return patientServ.afficherListePatients();
     }
 
     @CrossOrigin
     @GetMapping("/patient/{id}")
     public PatientDTO afficherPatientParID(@PathVariable Long id) {
+        // renvoie les détails d'un patient existant par son identifiant
         return patientServ.afficherPatient(id);
     }
 
     @CrossOrigin
     @PutMapping("/patient/{id}")
     public PatientDTO modifierAjouterPatient(@PathVariable Long id, @RequestBody PatientDTO patientDTO) {
+        // modifie un patient existant avec les informations fournies
         return patientServ.modifierPatient(patientDTO, id);
     }
 
