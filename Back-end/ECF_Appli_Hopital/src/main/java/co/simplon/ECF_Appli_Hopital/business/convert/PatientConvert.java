@@ -1,3 +1,6 @@
+// Cette classe permet de convertir des objets DTO (Back) en Entity (BDD)
+// pour faciliter la manipulation des données dans de l'application
+
 package co.simplon.ECF_Appli_Hopital.business.convert;
 
 import java.util.ArrayList;
@@ -13,8 +16,11 @@ public class PatientConvert {
         // Aucun constructeur public pour une classe Singleton
     }
 
+    // permet d'obtenir l'instance unique de PatientConvert
     public static PatientConvert getInstance() {
+        // vérifie si l'instance existe déjà
         if (instance == null) {
+            // sinon crée une nouvelle instance de PatientConvert
             instance = new PatientConvert();
         }
         return instance;
