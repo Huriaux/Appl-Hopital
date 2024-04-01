@@ -20,6 +20,7 @@ public class PatientController {
 
     private final PatientService patientServ;
 
+    // constructeur
     public PatientController(PatientService patientServ) {
         this.patientServ = patientServ;
     }
