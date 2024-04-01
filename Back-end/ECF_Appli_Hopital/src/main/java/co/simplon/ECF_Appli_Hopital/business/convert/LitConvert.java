@@ -35,7 +35,7 @@ public class LitConvert {
     // Listes :
 
     // Convert liste Patient (Entity) en liste Patient (DTO)
-    public List<LitDTO> convertListeLitToEntity(final List<Lit> listeLitEntity) {
+    public List<LitDTO> convertListeLitToDTO(final List<Lit> listeLitEntity) {
         List<LitDTO> listeLitDTO = new ArrayList<>();
         for (final Lit l : listeLitEntity) {
             listeLitDTO.add(convertLitToDTO(l));
@@ -44,7 +44,7 @@ public class LitConvert {
     }
 
     // Convert liste Patient (DTO) en liste Patient (Entity)
-    public List<Lit> convertListeLitToDTO(final List<LitDTO> listeLitDTO) {
+    public List<Lit> convertListeLitToEntity(final List<LitDTO> listeLitDTO) {
         List<Lit> listeLitEntity = new ArrayList<>();
         for (final LitDTO lDto : listeLitDTO) {
             listeLitEntity.add(convertLitToEntity(lDto));

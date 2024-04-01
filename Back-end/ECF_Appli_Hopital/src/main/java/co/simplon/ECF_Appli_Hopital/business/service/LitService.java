@@ -5,7 +5,6 @@ import java.util.List;
 import co.simplon.ECF_Appli_Hopital.business.dto.LitDTO;
 
 public interface LitService {
-    LitDTO affecterPatientLit(LitDTO litDispo);
 
     List<LitDTO> afficherListeLitsDisponibles();
 
