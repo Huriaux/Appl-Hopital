@@ -1,7 +1,5 @@
 package co.simplon.ECF_Appli_Hopital.persistence.entity;
 
-import java.util.Date;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,7 +21,7 @@ public class Services {
     private long idService;
 
     @Column(name = "nom_service")
-    private Date nomService;
+    private String nomService;
 
     @OneToMany
     @JoinColumn(name = "id_chambre")
@@ -39,11 +37,11 @@ public class Services {
         this.idService = idService;
     }
 
-    public Date getNomService() {
+    public String getNomService() {
         return nomService;
     }
 
-    public void setNomService(Date nomService) {
+    public void setNomService(String nomService) {
         this.nomService = nomService;
     }
 

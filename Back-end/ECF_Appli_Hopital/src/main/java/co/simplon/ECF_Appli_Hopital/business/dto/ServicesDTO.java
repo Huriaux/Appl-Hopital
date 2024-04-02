@@ -23,11 +23,11 @@ public class ServicesDTO {
         this.nomService = nomService;
     }
 
-    public long getidChambre() {
+    public long getIdChambre() {
         return idChambre;
     }
 
-    public void setidChambre(long idChambre) {
+    public void setIdChambre(long idChambre) {
         this.idChambre = idChambre;
     }
 }
