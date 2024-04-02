@@ -27,6 +27,8 @@ public class Chambre {
     @JoinColumn(name = "id_lit")
     private Lit lit;
 
+    // getters et setters
+
     public long getIdChambre() {
         return idChambre;
     }

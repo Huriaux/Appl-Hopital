@@ -16,43 +16,33 @@ import co.simplon.ECF_Appli_Hopital.persistence.repository.ChambreQuery;
 public class ChambreServiceImpl implements ChambreService {
 
     private ChambreQuery chambreRepository;
-
-    // TODO attention 'litService' --> vu avec Yassen
-    private LitService litService; // Injection du service LitService
+    private LitService litService;
 
     // constructeur
     public ChambreServiceImpl(ChambreQuery chambreRepository, LitService litService) {
         this.chambreRepository = chambreRepository;
-        this.litService = litService; // Initialisation du service LitService
+        this.litService = litService;
 
     }
 
     @Override
     public List<ChambreDTO> afficherListeChambresDispos() {
         // Récupérer la liste des lits à partir du LitService
-        List<LitDTO> lits = litService.afficherListeLits();
+        List<LitDTO> litsDispos = litService.afficherListeLits();
 
-        List<LitDTO> litsDispos = new ArrayList<>();
-        for (LitDTO lit : lits) {
-            if (lit.getDispoLit()) {
-                litsDispos.add(lit);
-            }
-        }
-
-        // création d'une chambre correspondante pour chaque lit dispo
         List<ChambreDTO> chambresDispos = new ArrayList<>();
         for (LitDTO lit : litsDispos) {
-            ChambreDTO chambre = new ChambreDTO();
-            chambre.setIdChambre(lit.getIdLit()); // utiliser ID du lit comme Id de chambre
-            chambre.setNumChambre("chambre " + lit.getIdLit()); // numéro de chambre fictif
-            chambre.setIdLit(lit.getIdLit()); // lie la chambre au lit dispo
-            chambresDispos.add(chambre);
+            ChambreDTO chambre = chambreRepository.findByLitId(lit.getIdLit());
+            if (chambre != null && !chambresDispos.contains(chambre)) {
+                chambresDispos.add(chambre);
+            }
         }
         return chambresDispos;
     }
 
     @Override
     public ChambreDTO afficherChambre(Long id) {
+        @SuppressWarnings("null")
         Optional<Chambre> chambreOptional = chambreRepository.findById(id);
         // condition : vérifie si la chambre rechercheé est présente dans la BDD
         if (chambreOptional.isPresent()) {

@@ -8,6 +8,8 @@ public interface LitService {
 
     List<LitDTO> afficherListeLits();
 
+    List<LitDTO> afficherListeLitsDispos();
+
     LitDTO afficherLit(Long id);
 
 }

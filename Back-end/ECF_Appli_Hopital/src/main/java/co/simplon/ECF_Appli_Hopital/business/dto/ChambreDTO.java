@@ -5,6 +5,8 @@ public class ChambreDTO {
     private String numChambre;
     private long idLit; // clé étrangère de la Table Lit
 
+    private Long idService;
+
     // getters et setters
 
     public long getIdChambre() {
@@ -29,6 +31,14 @@ public class ChambreDTO {
 
     public void setIdLit(long idLit) {
         this.idLit = idLit;
+    }
+
+    public void setIdService(Long idService) {
+        this.idService = idService;
+    }
+
+    public Long getIdService() {
+        return idService;
     }
 
 }

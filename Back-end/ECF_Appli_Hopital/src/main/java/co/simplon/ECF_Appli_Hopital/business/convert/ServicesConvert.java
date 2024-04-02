@@ -7,11 +7,11 @@ import co.simplon.ECF_Appli_Hopital.business.dto.ServicesDTO;
 import co.simplon.ECF_Appli_Hopital.persistence.entity.Services;
 
 public class ServicesConvert {
-    private static ChambreConvert instance;
+    private static ServicesConvert instance;
 
-    public static ChambreConvert getInstance() {
+    public static ServicesConvert getInstance() {
         if (instance == null) {
-            instance = new ChambreConvert();
+            instance = new ServicesConvert();
         }
         return instance;
     }
@@ -21,7 +21,7 @@ public class ServicesConvert {
         ServicesDTO servDTO = new ServicesDTO();
         servDTO.setIdService(servEntity.getIdService());
         servDTO.setNomService(servEntity.getNomService());
-        servDTO.setIdChambre(servEntity.getIdChambre().getIdChambre());
+        servDTO.setIdChambre(servEntity.getChambre().getIdChambre());
         return servDTO;
     }
 
@@ -36,7 +36,7 @@ public class ServicesConvert {
 
     // Listes :
 
-    // Convert liste Chambre (Entity) en liste Chambre (DTO)
+    // Convert liste Services (Entity) en liste Services (DTO)
     public List<ServicesDTO> convertListeServicesToDTO(final List<Services> listeServicesEntity) {
         List<ServicesDTO> listServDTO = new ArrayList<>();
         for (final Services serv : listeServicesEntity) {

@@ -25,7 +25,7 @@ public class Services {
 
     @OneToMany
     @JoinColumn(name = "id_chambre")
-    private Chambre idChambre;
+    private Chambre chambre;
 
     // getters et setters
 
@@ -45,11 +45,12 @@ public class Services {
         this.nomService = nomService;
     }
 
-    public Chambre getIdChambre() {
-        return idChambre;
+    public Chambre getChambre() {
+        return chambre;
     }
 
-    public void setIdChambre(Chambre idChambre) {
-        this.idChambre = idChambre;
+    public void setChambre(Chambre chambre) {
+        this.chambre = chambre;
     }
+
 }
