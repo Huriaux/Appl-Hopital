@@ -46,6 +46,7 @@ public class LitServiceImpl implements LitService {
 
     @Override
     public LitDTO afficherLit(Long id) {
+        @SuppressWarnings("null")
         Optional<Lit> litOptional = litRepository.findById(id);
         // condition : vérifie si le lit recherché par son id est présent dans la BDD sinon retournera 'null'
         if (litOptional.isPresent()) {

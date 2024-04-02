@@ -6,7 +6,7 @@ import java.util.Optional;
 import co.simplon.ECF_Appli_Hopital.persistence.entity.Lit;
 
 // l'Interface hérite de la classe Lit
-public class LitQuery {
+public interface LitQuery {
 
     public List<Lit> findAll() {
         // TODO Auto-generated method stub
