@@ -24,7 +24,7 @@ public class LitController {
     @GetMapping("/lit")
     public List<LitDTO> listerLitsDispos() {
         // renvoi la liste de tous les lits disponibles
-        return litServ.afficherListeLitsDisponibles();
+        return litServ.afficherListeLits();
     }
 
     @CrossOrigin

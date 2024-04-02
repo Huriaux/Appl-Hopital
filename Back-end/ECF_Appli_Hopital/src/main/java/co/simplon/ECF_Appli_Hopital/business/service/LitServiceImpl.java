@@ -1,6 +1,5 @@
 package co.simplon.ECF_Appli_Hopital.business.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,21 +21,10 @@ public class LitServiceImpl implements LitService {
     }
 
     @Override
-    // permet d'afficher tous les patient existant de la BDD
-    public List<LitDTO> afficherListeLitsDisponibles() {
-        // déclaration variable 'listePatients' pour récupèrer tous les patients de la BDD sous forme de liste
+    // permet d'afficher tous les lits existant de la BDD
+    public List<LitDTO> afficherListeLits() {
         List<Lit> listeLit = litRepository.findAll();
-        // ajout d'une condition qui permet de n'afficher QUE les lits disponible
-        List<Lit> listeLitDisponibles = new ArrayList<>();
-        for (Lit lit : listeLit) {
-            // vérifie si le lit est disponible (dispoLit == true)
-            if (lit.getDispoLit()) {
-                // s'il est 'true' alors il est ajouter à la liste 'listeLitDisponibles'
-                listeLitDisponibles.add(lit);
-            }
-        }
-        // ici on retourne la liste des entités Patient convertie en DTO
-        return LitConvert.getInstance().convertListeLitToDTO(listeLitDisponibles);
+        return LitConvert.getInstance().convertListeLitToDTO(listeLit);
     }
 
     @Override
