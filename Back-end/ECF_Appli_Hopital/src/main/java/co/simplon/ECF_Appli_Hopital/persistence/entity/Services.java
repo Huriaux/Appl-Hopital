@@ -23,11 +23,13 @@ public class Services {
     private long idService;
 
     @Column(name = "nom_service")
-    private Date dateArrivee;
+    private Date nomService;
 
     @OneToMany
     @JoinColumn(name = "id_chambre")
-    private Lit lit;
+    private Chambre idChambre;
+
+    // getters et setters
 
     public long getIdService() {
         return idService;
@@ -37,20 +39,19 @@ public class Services {
         this.idService = idService;
     }
 
-    public Date getDateArrivee() {
-        return dateArrivee;
+    public Date getNomService() {
+        return nomService;
     }
 
-    public void setDateArrivee(Date dateArrivee) {
-        this.dateArrivee = dateArrivee;
+    public void setNomService(Date nomService) {
+        this.nomService = nomService;
     }
 
-    public Lit getLit() {
-        return lit;
+    public Chambre getIdChambre() {
+        return idChambre;
     }
 
-    public void setLit(Lit lit) {
-        this.lit = lit;
+    public void setIdChambre(Chambre idChambre) {
+        this.idChambre = idChambre;
     }
-
 }
