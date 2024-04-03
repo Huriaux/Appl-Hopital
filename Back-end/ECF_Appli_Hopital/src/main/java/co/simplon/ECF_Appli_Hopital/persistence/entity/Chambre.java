@@ -2,6 +2,7 @@ package co.simplon.ECF_Appli_Hopital.persistence.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,7 +24,7 @@ public class Chambre {
     @Column(name = "numero_chambre")
     private String numChambre;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_lit")
     private Lit lit;
 
