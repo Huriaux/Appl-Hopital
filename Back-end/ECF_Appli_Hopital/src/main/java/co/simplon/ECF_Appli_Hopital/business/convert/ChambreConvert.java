@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.simplon.ECF_Appli_Hopital.business.dto.ChambreDTO;
+import co.simplon.ECF_Appli_Hopital.business.dto.LitDTO;
 import co.simplon.ECF_Appli_Hopital.persistence.entity.Chambre;
+import co.simplon.ECF_Appli_Hopital.persistence.entity.Lit;
 
 public class ChambreConvert {
     private static ChambreConvert instance;
@@ -21,7 +23,8 @@ public class ChambreConvert {
         ChambreDTO chDto = new ChambreDTO();
         chDto.setIdChambre(chEntity.getIdChambre());
         chDto.setNumChambre(chEntity.getNumChambre());
-        chDto.setIdLit(chEntity.getLit().getIdLit()); // On récupère l'id du lit associé
+        LitDTO litDto = LitConvert.getInstance().convertLitToDTO(chEntity.getLit());
+        chDto.setIdLit(litDto);
         return chDto;
     }
 
@@ -30,6 +33,8 @@ public class ChambreConvert {
         Chambre chEntity = new Chambre();
         chEntity.setIdChambre(chDto.getIdChambre());
         chEntity.setNumChambre(chDto.getNumChambre());
+        Lit lit = LitConvert.getInstance().convertLitToEntity(chDto.getIdLit());
+        chEntity.setLit(lit);
         return chEntity;
     }
 

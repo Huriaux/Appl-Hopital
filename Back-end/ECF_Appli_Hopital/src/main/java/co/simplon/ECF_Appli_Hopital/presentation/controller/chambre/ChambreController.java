@@ -20,14 +20,14 @@ public class ChambreController {
     }
 
     @CrossOrigin
-    @GetMapping("./chambre")
+    @GetMapping("/chambre")
     public List<ChambreDTO> listerChambreDispos() {
         return chambreServ.afficherListeChambresDispos();
     }
 
     @CrossOrigin
     @GetMapping("/chambre/{id}")
-    public ChambreDTO afficherChambreParID(@PathVariable Long id) {
+    public ChambreDTO afficherChambreParID(@PathVariable("id") Long id) {
         // renvoie les détails d'un lit existant par son identifiant
         return chambreServ.afficherChambre(id);
     }

@@ -1,6 +1,5 @@
 package co.simplon.ECF_Appli_Hopital.business.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,36 +7,29 @@ import org.springframework.stereotype.Service;
 
 import co.simplon.ECF_Appli_Hopital.business.convert.ChambreConvert;
 import co.simplon.ECF_Appli_Hopital.business.dto.ChambreDTO;
-import co.simplon.ECF_Appli_Hopital.business.dto.LitDTO;
 import co.simplon.ECF_Appli_Hopital.persistence.entity.Chambre;
 import co.simplon.ECF_Appli_Hopital.persistence.repository.ChambreQuery;
+import co.simplon.ECF_Appli_Hopital.persistence.repository.LitQuery;
 
 @Service
 public class ChambreServiceImpl implements ChambreService {
 
     private ChambreQuery chambreRepository;
-    private LitService litService;
+    private LitQuery litRepository;
+    private LitService litServ;
 
     // constructeur
-    public ChambreServiceImpl(ChambreQuery chambreRepository, LitService litService) {
+    public ChambreServiceImpl(ChambreQuery chambreRepository, LitQuery litRepository, LitService litServ) {
         this.chambreRepository = chambreRepository;
-        this.litService = litService;
+        this.litRepository = litRepository;
+        this.litServ = litServ;
 
     }
 
     @Override
     public List<ChambreDTO> afficherListeChambresDispos() {
-        // Récupérer la liste des lits à partir du LitService
-        List<LitDTO> litsDispos = litService.afficherListeLits();
-
-        List<ChambreDTO> chambresDispos = new ArrayList<>();
-        for (LitDTO lit : litsDispos) {
-            ChambreDTO chambre = chambreRepository.findByLitId(lit.getIdLit());
-            if (chambre != null && !chambresDispos.contains(chambre)) {
-                chambresDispos.add(chambre);
-            }
-        }
-        return chambresDispos;
+        List<Chambre> litsDispos = chambreRepository.findAll();
+        return ChambreConvert.getInstance().convertListeChambreToDTO(litsDispos);
     }
 
     @Override
