@@ -144,3 +144,30 @@ Lorsque le patient quitte le service, son séjour se termine automatiquement, li
 
 **Conclusion :**
 Ces tables permettent de gérer efficacement les données des patients, des services hospitaliers, des lits, des chambres et des séjours, assurant ainsi un suivi précis des activités et des ressources de l'hôpital.
+
+---
+
+## **-----------| API |**
+
+_J'ai initié un projet Maven en Java en utilisant Spring Initializr. J'ai structuré mon code en créant les trois couches principales d'une application Java : `business`, `persistence` et `presentation`._
+
+Dans le répertoire src/main/java/co/simplon/ECF_App_Hopital, j'ai organisé mes classes comme suit :
+
+- Dans le dossier business, j'ai créé les sous-dossiers convert, dto et service.
+- Dans le dossier persistence, j'ai créé les sous-dossiers entity et repository.
+- Dans le dossier presentation, j'ai créé le dossier controller, qui contient le dossier patient.
+
+Dans le dossier entity/, j'ai conçu la classe Patient.java pour représenter mes données métier, en y incluant les méthodes d'accès (getters/setters). Ensuite, dans le dossier business/dto/, j'ai ajouté le fichier PatientDTO.java pour définir une représentation de données transférables.
+
+Par la suite,
+
+Dans le fichier PatientConvert.java du dossier business/convert, j'ai implémenté des méthodes permettant de réaliser des conversions entre les objets DTO et les entités, ainsi que des conversions de ces objets en listes, facilitant ainsi le traitement et la manipulation des données dans l'application.
+
+Ensuite, toujours dans la couche Business, service/ j’ai créé deux fichiers :
+
+- PatientService.java qui permet de créer plus tâches à accomplir pour gérer les patients : ajouter un nouveau patient, afficher la liste des patients, afficher un patient grâce à son ‘id’ et modifier les informations d’un patient existant.
+- PatientServiceImpl.java permet de concrétiser ces tâches implémentant les instructions dans dans chacune des quatre méthodes présente.
+
+On planifie d’abord ce que le programme doit faire avant de coder.
+
+Enfin dans la couche Presentation, j’ai créer la classe controller et défini ses méthodes pour gérer les requêtes liées aux patients.
