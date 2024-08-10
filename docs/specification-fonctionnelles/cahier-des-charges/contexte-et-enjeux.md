@@ -1,7 +1,7 @@
 # Contexte & Enjeux
 
 ## Contexte du Projet
-L'Hopital a besoin d'une solution pour améliorer la gestion des séjours de ses patients. Actuellement, cette gestion est effectuée manuellement, ce qui peut conduire à des erreurs et à des inefficacités. Le projet consiste à développer une application qui facilitera la gestion des admissions, des séjours, et des sorties des patients. Cette application doit simplifier ces processus pour le personnel hospitalier.
+L'**App' Hopital** a besoin d'une solution pour améliorer la gestion des séjours de ses patients. Actuellement, cette gestion est effectuée manuellement, ce qui peut conduire à des erreurs et à des inefficacités. Le projet consiste à développer une application qui facilitera la gestion des admissions, des séjours, et des sorties des patients. Cette application doit simplifier ces processus pour le personnel hospitalier.
 
 ## Enjeux du Projet
 ### Simplicité et Rapidité d'Utilisation
