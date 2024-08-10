@@ -1,5 +1,7 @@
 # Présentation du Projet : Application de Gestion des Séjours de Patients
 
+![Image du Brief sur SimplOnline](/docs/img/image-docs/illustration-brief.png)
+
 ## Introduction
 Dans le cadre de ma formation en Concepteur Développeur d’Applications (CDA), le projet consiste à développer une application pour la gestion des séjours des patients dans un hôpital. Ce projet, issu d'un Brief type ECF, se divise en deux parties principales : le développement du front-end et du back-end, ainsi que la conception de la base de données. L'objectif est de créer une solution complète qui permettra de gérer efficacement les informations des patients, de leur admission à leur sortie, en passant par leur affectation aux services et lits de l'hôpital.
 
