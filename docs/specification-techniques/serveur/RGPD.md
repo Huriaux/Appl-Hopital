@@ -1,8 +1,6 @@
 ## RGPD - Règlement Général sur la Protection des Données
 
-# RGPD - Règlement Général sur la Protection des Données
-
-Dans le cadre de la gestion des séjours de patients au sein de notre hôpital, nous nous engageons à respecter les exigences du RGPD pour assurer la protection des données personnelles. Cette démarche vise à garantir la confidentialité, l'intégrité et la disponibilité des informations médicales et administratives des patients. Voici les mesures principales mises en place :
+Dans le cadre de la gestion des séjours de patients d'App'Hopital, nous nous engageons à respecter les exigences du RGPD pour assurer la protection des données personnelles. Cette démarche vise à garantir la confidentialité, l'intégrité et la disponibilité des informations médicales et administratives des patients. Voici les mesures principales mises en place :
 
 ## 1. Principe de Minimisation des Données
 
