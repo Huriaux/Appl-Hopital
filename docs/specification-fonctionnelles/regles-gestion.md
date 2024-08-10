@@ -8,20 +8,24 @@
 - Chaque service contient 10 chambres.
 - Chaque chambre dispose d'un seul lit.
 - Un patient doit être enregistré dans la base de données avant de pouvoir être affecté à un lit dans un service.
+- À l'enregistrement de la sortie d'un patient, le lit est automatiquement libéré.
+
 
 ## Actions et Règles
 
-RG-1. La **Secrétaire médical** doit pouvoir ajouter un nouveau patient.
+- La **Secrétaire médical** doit pouvoir ajouter un nouveau patient.
 
-RG-2. La **Secrétaire médical** doit pouvoir modifier un patient existant.
+- La **Secrétaire médical** doit pouvoir rechercher un patient existant.
+    - Si le patient existe, la **Secrétaire médical** doit pouvoir modifier les informations du patient existant.
 
-RG-3. La **Secrétaire médical** doit pouvoir créer un séjour pour un patient.
+- La **Secrétaire médical** doit pouvoir prendre en compte l’arrivée d’un patient dans un service.
+    - La **Secrétaire médical** doit pouvoir créer un séjour pour un patient.
+        - Ici également, la **Secrétaire médical** doit pouvoir rechercher un patient existant.
+        - Si le patient existe, la **Secrétaire médical** doit pouvoir ajouter le patient existant au séjour.
 
-RG-4. La **Secrétaire médical** doit pouvoir prendre en compte l’arrivée d’un patient dans un service.
+- Une fois la création du séjour établit, la **Secrétaire médical** doit pouvoir affecter un lit disponible au patient en séjour.
 
-RG-5. La **Secrétaire médical** doit pouvoir affecter un lit à un patient.
-
-RG-6. La **Secrétaire médical** doit pouvoir prendre en compte la sortie d’un patient.
+- La **Secrétaire médical** doit pouvoir également prendre en compte la sortie d’un patient.
 
 
 ---
