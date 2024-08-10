@@ -1,5 +1,18 @@
 # Contrôle d'accès basé sur le rôle (RBAC)
 
+## Rôles
+- **Secrétaire médical** : Gère l'ensemble des opérations dans le système.
+
+## Permissions
+- **Gérer les patients** : Ajouter, modifier les informations des patients.
+- **Gérer les séjours** : Créer un séjour, prendre en compte l’arrivée et la sortie d’un patient.
+- **Gérer les services** : Affecter un patient à un service.
+- **Gérer les chambres et les lits** : Vérifier la disponibilité des lits, affecter un lit à un patient, libérer un lit à la sortie d'un patient.
+
+## Association Rôle-Permissions
+- **Secrétaire médical** : A toutes les permissions listées ci-dessus.
+
+
 ---
 <!-- Bouton 'Retour vers le Sommaire' et Bouton 'Retour vers haut' du document -->
 <div align="right">
