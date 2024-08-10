@@ -11,7 +11,6 @@
 ![Markdown](https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white)
 
 
-
 <u>Frameworks & librairies</u>\
 ![React Badge](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=000&style=for-the-badge)
 ![Spring Boot Badge](https://img.shields.io/badge/Spring%20Boot-6DB33F?logo=springboot&logoColor=fff&style=for-the-badge)
@@ -32,6 +31,8 @@
 ## <u>Introduction</u>
 ...
 
+
+![](/docs/img/image-docs/illustration-projet-app-hopital.png)
 
 ---
 
