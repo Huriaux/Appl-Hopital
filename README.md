@@ -35,7 +35,7 @@
 *Bienvenue dans le projet de gestion des séjours des patients de l'**App'Hopital**. Cette application a été développée pour faciliter la gestion des séjours et des sorties des patients au sein de l'hôpital. Elle permet aux équipes hospitalières de gérer efficacement les informations des patients, d'assigner des lits et des chambres, et de suivre les séjours en temps réel. L'application offre une interface simple et rapide pour garantir une expérience utilisateur fluide et optimisée, tout en assurant la conformité avec les réglementations en matière de protection des données.*
 
 
-![](/docs/img/image-docs/illustration-projet-app-hopital.png)
+![Illustration App'Hopital](/docs/img/image-docs/illustration-projet-app-hopital.png)
 
 ---
 
