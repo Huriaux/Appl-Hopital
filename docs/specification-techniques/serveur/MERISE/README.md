@@ -1,5 +1,24 @@
 # Documentation du MERISE (DP)
 
+## La normalisation
+
+La normalisation est un processus qui permet de structurer une base de données de manière à réduire la redondance des données et à éviter les anomalies lors des opérations. Lors de la conception de la base de données pour ce projet, j'ai appliqué les principes de normalisation pour m'assurer que chaque table soit bien organisée et efficace.
+
+<u>**Les différentes Formes Normales :**</u>
+- **1NF** (Première Forme Normale) : Assure que chaque colonne contient des valeurs atomiques, c'est-à-dire indivisibles, et que chaque enregistrement est unique.
+- **2NF** (Deuxième Forme Normale) : Se base sur la 1NF et garantit que chaque attribut non-clé dépend entièrement de la clé primaire.
+- **3NF** (Troisième Forme Normale) : Se base sur la 2NF et élimine les dépendances transitives entre les attributs non-clés, assurant que les attributs dépendent uniquement de la clé primaire.
+- **BCNF** (Forme Normale de Boyce-Codd) : Une version renforcée de la 3NF qui résout les cas où la 3NF ne suffit pas à éliminer toutes les anomalies de dépendance.
+- **4NF** (Quatrième Forme Normale) : Assure qu'il n'y a pas de dépendances multi-valuées, c'est-à-dire que chaque attribut est indépendant des autres, sauf de la clé primaire.
+- **5NF** (Cinquième Forme Normale) : Après avoir atteint la 4NF, est un niveau avancé de normalisation destiné à minimiser la redondance dans les bases de données en décomposant les tables en structures plus petites et plus précises. Également connue sous le nom de projet-join normal form (PJNF)
+
+Dans ce projet, j'ai donc commencé par la 1NF pour m'assurer que chaque colonne contient des valeurs indivisibles, ce qui garantit la simplicité des données. Par exemple, dans la gestion des adresses des patients, j'ai divisé l'adresse en trois colonnes distinctes : adresse, code postal et commune, afin de respecter ce principe de valeurs atomiques. Ensuite, en appliquant la 2NF, j'ai veillé à ce que toutes les informations non-clé soient entièrement dépendantes de la clé primaire, éliminant ainsi les dépendances partielles. Enfin, j'ai appliqué la 3NF pour supprimer les dépendances transitives, garantissant que chaque attribut non-clé dépende uniquement de la clé primaire.
+
+Ces étapes ont permis de concevoir une base de données robuste, minimisant les risques d'erreurs et facilitant la maintenance et l'évolution du système.
+
+
+## Méthode MERISE
+
 **Merise** est une méthode de modélisation utilisée pour concevoir et structurer les données et les processus d'un système d'information. Elle permet de représenter de manière claire et détaillée les besoins fonctionnels et les interactions au sein d'un système, en offrant une vue d'ensemble structurée qui facilite la compréhension, la conception et la mise en œuvre de la base de données. 
 
 Dans le cadre de ce projet de gestion des patients pour un hôpital, l'objectif principal de la méthode Merise est de concevoir une base de données efficace et adaptée aux besoins spécifiques de l'application. Grâce à Merise, nous pouvons structurer les données relatives aux patients, aux séjours et aux autres éléments essentiels du système. 
@@ -20,6 +39,7 @@ Chaque entité est caractérisée par des attributs spécifiques, tels que l'ide
 - Le **Modèle Logique de Données (MLD)** qui est la transition du MCD vers un modèle adapté à l’implémentation dans une BDD, pour rendre une représentation plus précise de la BDD. Pour l'application de gestion des patients, le MLD transforme les entités et relations du MCD en tables et clés, définissant clairement les attributs et les relations entre ces tables pour une implémentation efficace dans une base de données relationnelle.
 
 - Le **Dictionnaire de Données** est un document centralisé qui décrit en détail chaque élément de données d'un système d'information afin d'assurer une compréhension et une gestion cohérentes des données tout au long du développement et de la maintenance du système.
+
 
 ---
 <!-- Bouton 'Retour vers le Sommaire' et Bouton 'Retour vers haut' du document -->
