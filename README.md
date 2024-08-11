@@ -65,10 +65,10 @@
 >
 >     - 📄 [Stratégie de Sécurisation](/docs/specification-techniques/serveur/strategie-securisation-BDD.md)
 >
->     - 📁 <u>**MERISE**</u>
+>     - 📁 <u>**[MERISE](/docs/specification-techniques/serveur/MERISE/README.md)**</u>
 >
->       - 📄 [MCD](/docs/specification-techniques/serveur/MERISE/MCD.MD)
->       - 📄 [MLD](/docs/specification-techniques/serveur/MERISE/MLD.MD)
+>       - 📄 [MCD](/docs/specification-techniques/serveur/MERISE/MCD.md)
+>       - 📄 [MLD](/docs/specification-techniques/serveur/MERISE/MLD.md)
 >       - 📄 [Dictionnaire de données](/docs/specification-techniques/serveur/MERISE/dictionnaire-donnees.md)
 >       - 📄 [MPD](/docs/specification-techniques/serveur/MERISE/MPD.md)
 >     - 📄 [Choix des Technos](/docs/specification-techniques/serveur/choix-technos-BDD.md)
