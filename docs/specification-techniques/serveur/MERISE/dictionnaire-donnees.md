@@ -1,4 +1,7 @@
 # Dictionnaire de données
+*Le dictionnaire de données dans MERISE est un document qui recense et décrit l'ensemble des données utilisées dans le système d'information. Il sert à clarifier les informations nécessaires pour le développement, en standardisant les définitions des données. Il facilite la conception et le développement de la base de données en assurant une compréhension commune des données entre les développeurs et les analystes. Il est conçu avec au moins quatre colonnes : le nom du champ, son type, une description de son rôle, et un exemple concret de valeur.*
+
+![Dictionnaire de données](/docs/specification-techniques/serveur/MERISE/assets/dictionnaire-de-donnees.png)
 
 ---
 <!-- Bouton 'Retour vers le Sommaire' et Bouton 'Retour vers haut' du document -->
