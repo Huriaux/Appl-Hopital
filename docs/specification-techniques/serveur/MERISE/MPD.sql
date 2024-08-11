@@ -5,11 +5,11 @@ CREATE TABLE IF NOT EXISTS Patient (
     nom VARCHAR(50) NOT NULL,
     prenom VARCHAR(50) NOT NULL,
     date_naissance DATE NOT NULL,
-    num_secu VARCHAR(9) NOT NULL,
+    num_secu VARCHAR(9) UNIQUE NOT NULL,
     adresse VARCHAR(100) NOT NULL,
     cp INT NOT NULL,
     commune VARCHAR(50) NOT NULL,
-    telephone VARCHAR(15) NOT NULL,
+    telephone VARCHAR(15) UNIQUE NOT NULL,
     email VARCHAR(100),
     -- créer par défaut avec la date et l'heure actuelle du système au moment de l'AJOUT d'un nouveau patient
     dt_creation TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
