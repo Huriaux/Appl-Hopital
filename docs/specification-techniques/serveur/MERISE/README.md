@@ -1,6 +1,6 @@
 # Documentation du MERISE (DP)
 
-## La normalisation
+## <u>La normalisation</u>
 
 La normalisation est un processus qui permet de structurer une base de données de manière à réduire la redondance des données et à éviter les anomalies lors des opérations. Lors de la conception de la base de données pour ce projet, j'ai appliqué les principes de normalisation pour m'assurer que chaque table soit bien organisée et efficace.
 
@@ -17,7 +17,7 @@ Dans ce projet, j'ai donc commencé par la 1NF pour m'assurer que chaque colonne
 Ces étapes ont permis de concevoir une base de données robuste, minimisant les risques d'erreurs et facilitant la maintenance et l'évolution du système.
 
 
-## Méthode MERISE
+## <u>Méthode MERISE</u>
 
 **Merise** est une méthode de modélisation utilisée pour concevoir et structurer les données et les processus d'un système d'information. Elle permet de représenter de manière claire et détaillée les besoins fonctionnels et les interactions au sein d'un système, en offrant une vue d'ensemble structurée qui facilite la compréhension, la conception et la mise en œuvre de la base de données. 
 
@@ -40,6 +40,27 @@ Chaque entité est caractérisée par des attributs spécifiques, tels que l'ide
 
 - Le **Dictionnaire de Données** est un document centralisé qui décrit en détail chaque élément de données d'un système d'information afin d'assurer une compréhension et une gestion cohérentes des données tout au long du développement et de la maintenance du système.
 
+## <u>MPD</u>
+
+Mon MPD repose sur les concepts fondamentaux de la méthode MERISE, tels que le Modèle Conceptuel de Données (MCD), le Modèle Logique de Données (MLD), et le Dictionnaire de Données. Ces concepts ont guidé la conception structurée de la base de données, assurant une cohérence et une précision dans le stockage et la gestion des données.
+
+### <u>Structure du MPD</u>
+
+#### Création des Tables :
+- Chaque table a été soigneusement définie avec ses colonnes spécifiques et ses types de données. Par exemple, la table Patient inclut des informations comme le nom, le prénom, et le numéro de sécurité sociale.
+
+#### Fonctions et Triggers :
+- J'ai inclus des fonctions et des triggers pour gérer automatiquement les dates de création et de modification des enregistrements. Ces éléments assurent que la date et l'heure actuelles sont automatiquement enregistrées lors de l'insertion et de la mise à jour des données.\
+- **Exemple** : Le trigger set_creation_date_trigger attribue la date et l'heure de création à chaque nouvel enregistrement dans la table Patient.
+
+#### Insertion de Données Factices :
+- Pour tester et manipuler les données, j'ai inséré des données factices dans chaque table. Ces données permettent de vérifier le bon fonctionnement des requêtes et des relations entre les tables.
+
+#### Commentaire du Code :
+- J'ai pris soin de commenter le code SQL de manière détaillée. Chaque section, fonction, et trigger est accompagnée de commentaires expliquant leur rôle et leur fonctionnement.\
+- **Objectif** : Cette documentation facilite la compréhension du code pour les futurs développeurs, et aide à maintenir une bonne pratique de documentation pour les projets futurs.
+
+Cette approche garantit non seulement que la base de données est bien structurée et fonctionnelle, mais aussi que le code est facile à comprendre et à maintenir. Les commentaires permettent d'assurer une bonne communication des intentions du code, ce qui est crucial pour une collaboration efficace avec les collègues et pour les projets futurs.
 
 ---
 <!-- Bouton 'Retour vers le Sommaire' et Bouton 'Retour vers haut' du document -->
