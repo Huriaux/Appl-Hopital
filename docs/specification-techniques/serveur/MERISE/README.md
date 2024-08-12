@@ -43,23 +43,36 @@ Chaque entité est caractérisée par des attributs spécifiques, tels que l'ide
 ## <u>Mise en place de la BDD (Docker-compose, PostgreSQL, pgAdmin, MPD)</u>
 
 Pour mettre en place la base de données, j’ai utilisé Docker, PostgreSQL comme système de gestion de bases de données, et pgAdmin pour l'administration. Voici comment j'ai procédé, étape par étape.
-Tout d'abord, j'ai créé un fichier docker-compose (docker-compose.yml). Ce fichier décrit comment configurer et lancer plusieurs services (comme ici, une base de données PostgreSQL et pgAdmin) dans des conteneurs Docker. 
-Dans ce fichier, j'ai défini deux services : 
-Un service PostgreSQL utilise l'image officielle de PostgreSQL, configure les informations d'identification de la base de données (utilisateur, mot de passe, et nom de la base), et définit les ports à utiliser. 
-Et un service pgAdmin utilise une image pour cet outil d'administration, avec des paramètres pour l'email et le mot de passe de connexion, ainsi qu'un port pour y accéder depuis un navigateur web.
-Le fichier docker-compose.yml prêt, pour démarrer les conteneurs, j'ai utilisé la commande docker-compose up -d qui permet de lancer les services définis dans le fichier en arrière-plan.
-Ensuite, je vérifie que les conteneurs étaient bien lancés avec la commande docker ps. 
-Elle m'a permis de lister tous les conteneurs en cours d'exécution avec leurs détails, comme les ports utilisés.
- Ainsi, le conteneur en marche, j'ai pu accéder à l'interface de pgAdmin sur mon navigateur web en tapant l'URL http://localhost:5050. Sur la page de connexion de pgAdmin, j'ai entré l'email et le mot de passe que j'avais définis dans le fichier docker-compose.yml.
-Une fois connecté à pgAdmin, il m'a fallu ajouter un nouveau serveur pour me connecter à PostgreSQL. Pour ce faire, j'ai cliqué sur "Add New Server" dans pgAdmin. Dans la fenêtre qui s'est ouverte, j'ai d'abord attribué un nom au serveur, comme "AppHopital", afin de pouvoir l'identifier facilement.
-Ensuite, dans l'onglet "Connection", j'ai configuré les détails nécessaires pour établir la connexion avec la base de données PostgreSQL. J'ai spécifié postgres_container comme nom d'hôte ("Host"), ce qui correspond au nom du conteneur Docker exécutant PostgreSQL. Pour les droits d’accès, j'ai entré dbuser comme "Username" et dbpass comme "Password". Ces informations correspondent aux paramètres définis dans le fichier docker-compose.yml, qui détermine les droits d'accès pour les utilisateurs de la base de données.
+
+Tout d'abord, j'ai créé un fichier **`docker-compose.yml`**. Ce fichier décrit comment configurer et lancer plusieurs services (comme ici, une base de données PostgreSQL et pgAdmin) dans des conteneurs Docker. 
+
+<u>Dans ce fichier, j'ai défini deux services :</u> 
+- Un **service PostgreSQL** utilise l'image officielle de PostgreSQL, configure les informations d'identification de la base de données (utilisateur, mot de passe, et nom de la base), et définit les ports à utiliser. 
+- Et un **service pgAdmin** utilise une image pour cet outil d'administration, avec des paramètres pour l'email et le mot de passe de connexion, ainsi qu'un port pour y accéder depuis un navigateur web.
+
+Le fichier docker-compose.yml prêt, pour **démarrer les conteneurs**, j'ai utilisé la commande `docker-compose up -d` qui permet de lancer les services définis dans le fichier en arrière-plan.
+
+Ensuite, j'ai **vérifié que les conteneurs étaient bien lancés** avec la commande `docker ps`. Elle m'a permis de lister tous les conteneurs en cours d'exécution avec leurs détails, comme les ports utilisés.
+
+ Ainsi, le conteneur en marche, j'ai pu **accéder à l'interface de pgAdmin** sur mon navigateur web en tapant l'URL http://localhost:5050. Sur la page de connexion de pgAdmin, j'ai entré l'email et le mot de passe que j'avais définis dans le fichier docker-compose.yml.
+
+Une fois connecté à pgAdmin, il m'a fallu **ajouter un nouveau serveur** pour me connecter à PostgreSQL. Pour ce faire, j'ai cliqué sur "Add New Server" dans pgAdmin. Dans la fenêtre qui s'est ouverte, j'ai d'abord attribué un nom au serveur, comme "AppHopital", afin de pouvoir l'identifier facilement.
+
+Ensuite, dans l'**onglet "Connection"**, j'ai configuré les détails nécessaires pour établir la connexion avec la base de données PostgreSQL. J'ai spécifié postgres_container comme nom d'hôte ("Host"), ce qui correspond au nom du conteneur Docker exécutant PostgreSQL. Pour les droits d’accès, j'ai entré dbuser comme "Username" et dbpass comme "Password". Ces informations correspondent aux paramètres définis dans le fichier docker-compose.yml, qui détermine les droits d'accès pour les utilisateurs de la base de données.
+
 En définissant ces paramètres, j'ai assuré que pgAdmin pouvait se connecter correctement au conteneur PostgreSQL avec les bons privilèges. Cela permet de gérer et de manipuler la base de données via l'interface de pgAdmin tout en respectant les configurations de sécurité et d'accès établies.
-Mon Modèle Physique de Données (MPD) repose sur les concepts fondamentaux de la méthode MERISE, tels que le MCD, le MLD et le Dictionnaire de Données. Ces concepts ont guidé la conception structurée de la base de données, assurant une cohérence et une précision dans le stockage et la gestion des données. 
-Permettez-moi de vous décrire la structure de mon MPD :
+
+Mon **Modèle Physique de Données (MPD)** repose sur les concepts fondamentaux de la méthode MERISE, tels que le MCD, le MLD et le Dictionnaire de Données. Ces concepts ont guidé la conception structurée de la base de données, assurant une cohérence et une précision dans le stockage et la gestion des données. 
+
+<u>Permettez-moi de vous décrire la structure de mon MPD :</u>\
 J'ai tout d’abord créé une table pour stocker les informations des patients. Chaque table de ma base de données a été soigneusement définie avec ses colonnes spécifiques et ses types de données. Par exemple, la table Patient inclut des informations telles que le nom, le prénom, la date de naissance, et le numéro de sécurité sociale. J'ai également ajouté des contraintes pour garantir l'unicité de certaines données, comme le numéro de sécurité sociale et le numéro de téléphone.
+
 Pour automatiser la gestion des dates de création et de modification des enregistrements, j'ai créé des fonctions et des triggers (déclencheurs). Par exemple, la fonction set_creation_date() est appelée à chaque fois qu'un nouveau patient est ajouté, et elle enregistre la date et l'heure actuelles dans la colonne dt_creation. La fonction set_modification_date() met à jour la colonne dt_modification chaque fois que les informations d'un patient existant sont modifiées. Ces fonctions sont ensuite associées à des triggers, comme le set_creation_date_trigger, qui s'exécutent automatiquement lors des insertions ou des modifications dans la table Patient.
-Pour tester et manipuler les données, j'ai inséré des données factices dans chaque table. Ces données m'ont permis de vérifier le bon fonctionnement des requêtes et des relations entre les tables.
-J'ai pris soin de commenter le code SQL de manière détaillée. Chaque section, fonction, et trigger est accompagné de commentaires expliquant leur rôle et leur fonctionnement. Cette documentation facilite la compréhension du code pour les futurs développeurs et aide à maintenir une bonne pratique de documentation pour les projets futurs.
+
+Pour **tester et manipuler les données**, j'ai inséré des données factices dans chaque table. Ces données m'ont permis de vérifier le bon fonctionnement des requêtes et des relations entre les tables.
+
+J'ai pris soin de commenter le code SQL de manière détaillée. Chaque section, fonction, et trigger est accompagné de commentaires expliquant leur rôle et leur fonctionnement. J'ai fais de même pour le fichier docker-compose. Cette documentation facilite la compréhension du code pour les futurs développeurs et aide à maintenir une bonne pratique de documentation pour les projets futurs.
+
 En résumé, ce processus m'a permis de mettre en place une base de données gérée par PostgreSQL, administrée via pgAdmin, avec des automatisations pour suivre les dates de création et de modification des enregistrements, le tout en utilisant Docker pour simplifier la gestion et l'isolation de ces services.
 
 
