@@ -1,31 +1,31 @@
-version: "3.8"
+version: "3.8"  # Version du format Docker Compose que j'utilise
 
-services:
-  db:
-    container_name: postgres_container
-    image: postgres:16
-    restart: always
-    environment:
-      POSTGRES_USER: dbuser
-      POSTGRES_PASSWORD: dbpass
-      POSTGRES_DB: ECF_Appli_Hopital
-    ports:
-      - "5432:5432"
-    volumes:
-      - db:/var/lib/postgresql/data
+services:  # Début de la définition des services (chaque service correspond à un conteneur Docker)
 
-  pg-admin:    
-    image: dpage/pgadmin4
-    restart: always
+  db:  # Nom du service pour la base de données PostgreSQL
+    container_name: postgres_container  # Nom du conteneur pour PostgreSQL
+    image: postgres:16  # Image Docker à utiliser pour PostgreSQL (version 16)
+    restart: always  # Indique que le conteneur doit redémarrer automatiquement s'il s'arrête
+    environment:  # Variables d'environnement pour configurer PostgreSQL
+      POSTGRES_USER: dbuser  # Nom d'utilisateur pour se connecter à PostgreSQL
+      POSTGRES_PASSWORD: dbpass  # Mot de passe pour cet utilisateur
+      POSTGRES_DB: ECF_Appli_Hopital  # Nom de la base de données qui sera créée au démarrage
+    ports:  # Configuration des ports pour accéder au service depuis l'extérieur du conteneur
+      - "5432:5432"  # Le port 5432 du conteneur est mappé sur le port 5432 de la machine hôte
+    volumes:  # Définition d'un volume pour persister les données de la base
+      - db:/var/lib/postgresql/data  # Le volume 'db' est monté dans le répertoire de données de PostgreSQL
 
-    environment:
-      PGADMIN_DEFAULT_EMAIL: admin@email.com
-      PGADMIN_DEFAULT_PASSWORD: adminpass
-      PGADMIN_LISTEN_PORT: 5050
-    ports:
-      - "5050:5050"
+  pg-admin:  # Nom du service pour l'outil de gestion pgAdmin
+    image: dpage/pgadmin4  # Image Docker à utiliser pour pgAdmin (version 4)
+    restart: always  # Indique que le conteneur doit redémarrer automatiquement s'il s'arrête
 
+    environment:  # Variables d'environnement pour configurer pgAdmin
+      PGADMIN_DEFAULT_EMAIL: admin@email.com  # Email par défaut pour se connecter à pgAdmin
+      PGADMIN_DEFAULT_PASSWORD: adminpass  # Mot de passe par défaut pour cet utilisateur
+      PGADMIN_LISTEN_PORT: 5050  # Port sur lequel pgAdmin écoutera à l'intérieur du conteneur
+    ports:  # Configuration des ports pour accéder à pgAdmin depuis l'extérieur du conteneur
+      - "5050:5050"  # Le port 5050 du conteneur est mappé sur le port 5050 de la machine hôte
 
-volumes:
-  db:
-    # driver: local
+volumes:  # Définition des volumes pour stocker les données en dehors des conteneurs
+  db:  # Volume nommé 'db' utilisé pour persister les données de PostgreSQL
+    # driver: local  # Optionnel : spécifie le pilote pour le volume (par défaut, local)
